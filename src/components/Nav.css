@@ -1,0 +1,30 @@
+.navbar {
+  width: 10rem;
+  height: 100vh;
+  background-color: #999;
+  position: fixed;
+  padding: 20px;
+  text-align: center;
+}
+.nav-container {
+  height: 100%;
+}
+.navbar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex-wrap: wrap;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-nav li {
+  color: antiquewhite;
+  font-size: 1.25rem;
+}
+
+/* .active {
+  color: #555;
+  text-decoration: underline;
+} */
