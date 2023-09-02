@@ -34,3 +34,28 @@
   border-radius: 10px;
   color: #fff;
 }
+
+.contact-page {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1020px) {
+  .contact-page {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 800px) {
+  .contact-page {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 650px) {
+  .contact-page {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    place-items: center;
+  }
+}

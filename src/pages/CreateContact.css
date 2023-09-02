@@ -1,13 +1,13 @@
-.create-form-container {
-  width: 70vw;
+/* .create-form-container {
+  max-width: 800px;
   height: 100vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-left: 15rem;
-  gap: 5rem;
+  gap: 2rem;
+  margin: 0 auto;
 }
 
 form {
@@ -23,7 +23,9 @@ form {
 .input-container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  justify-content: left;
   align-items: center;
 }
 
@@ -42,14 +44,11 @@ input {
 .input-radio-btn {
   display: flex;
   flex-direction: column;
-  /* gap: 0.rem; */
-  /* margin: 10px 0; */
   align-items: center;
   width: 20%;
 }
 .input-radio-container {
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   text-align: center;
   gap: 2rem;
@@ -68,3 +67,8 @@ input {
   padding: 10px 20px;
   border-radius: 10px;
 }
+
+.edit-btn-container {
+  display: flex;
+  justify-content: space-between;
+} */

@@ -32,60 +32,83 @@ const EditContact = () => {
   };
 
   return (
-    <div className="create-form-container page-margin">
-      <h1>Edit Contact</h1>
-      <form onSubmit={(e) => handleFormEdit(e)}>
-        <div className="input-container">
-          <label htmlFor="first-name">First Name:</label>
-          <input
-            type="text"
-            value={fName}
-            onChange={(e) => setFName(e.target.value)}
-          />
-        </div>
-        <div className="input-container">
-          <label htmlFor="last-name">Last Name:</label>
-          <input
-            type="text"
-            value={lName}
-            onChange={(e) => setLName(e.target.value)}
-          />
-        </div>
-        <div className="input-radio-container">
-          <label htmlFor="status">Status:</label>
+    <main className="ml-[150px] sm:m-0">
+      <div className="max-w-[800px] h-screen overflow-hidden flex flex-col justify-center items-center gap-8 mx-auto my-0">
+        <h1 className="text-[2.5rem] font-[500] mt-[-150px]">Edit Contact</h1>
+        <form
+          className="flex flex-col w-[350px] gap-4 border p-5 rounded-[10px] border-solid border-[#999]"
+          onSubmit={(e) => handleFormEdit(e)}
+        >
+          <div className="flex flex-col w-full justify-between items-center sm:flex-row">
+            <label htmlFor="first-name" className="w-[30%]">
+              First Name:
+            </label>
+            <input
+              type="text"
+              value={fName}
+              onChange={(e) => setFName(e.target.value)}
+              required
+              className=" p-[5px] border-2 border-solid border-[black] rounded-md w-[60%]"
+            />
+          </div>
+          <div className="flex flex-col w-full justify-between items-center sm:flex-row">
+            <label htmlFor="last-name" className="w-[30%]">
+              Last Name:
+            </label>
+            <input
+              type="text"
+              value={lName}
+              onChange={(e) => setLName(e.target.value)}
+              required
+              className=" p-[5px] border-2 border-solid border-[black] rounded-md w-[60%]"
+            />
+          </div>
+          <div className="flex items-center text-center gap-8">
+            <label htmlFor="status" className="w-[30%]">
+              Status:
+            </label>
 
-          <div className="input-radio-btn">
-            <div className="radio-btn">
-              <input
-                type="radio"
-                name="status"
-                checked={status === "Active"}
-                value="Active"
-                onChange={handleRadioChange}
-              />
-              <p>Active</p>
-            </div>
-            <div className="radio-btn">
-              <input
-                type="radio"
-                name="status"
-                checked={status === "Inactive"}
-                value="Inactive"
-                onChange={handleRadioChange}
-              />
-              <p>Inactive</p>
+            <div className="flex flex-col items-center w-1/5">
+              <div className="flex gap-4 w-full">
+                <input
+                  type="radio"
+                  name="status"
+                  checked={status === "Active"}
+                  value="Active"
+                  onChange={handleRadioChange}
+                  required
+                  className="accent-[black] w-[60%]"
+                />
+                <p>Active</p>
+              </div>
+              <div className="flex gap-4 w-full">
+                <input
+                  type="radio"
+                  name="status"
+                  checked={status === "Inactive"}
+                  value="Inactive"
+                  onChange={handleRadioChange}
+                  required
+                  className="accent-[black] w-[60%]"
+                />
+                <p>Inactive</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="edit-btn-container">
-          <button className="create-btn">Save Edited Contact</button>
+          <div className="flex justify-between">
+            <button className="border bg-[#555] text-white px-5 py-2.5 rounded-[10px] border-solid border-[#999]">
+              Save Edited Contact
+            </button>
 
-          <Link to={"/"}>
-            <button className="create-btn">Cancel</button>
-          </Link>
-        </div>
-      </form>
-    </div>
+            <Link to={"/"}>
+              <button className="border bg-[#555] text-white px-5 py-2.5 rounded-[10px] border-solid border-[#999]">
+                Cancel
+              </button>
+            </Link>
+          </div>
+        </form>
+      </div>
+    </main>
   );
 };
 
