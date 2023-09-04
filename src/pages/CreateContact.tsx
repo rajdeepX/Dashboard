@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./CreateContact.css";
 import { addContact } from "../features/contactSlice";
 import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
