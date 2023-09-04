@@ -33,14 +33,16 @@ const CreateContact = () => {
   };
 
   return (
-    <main className="create-contact">
-      <div className="create-contact-container">
-        <h1 className="create-contact-head">Create Contact</h1>
+    <main className="w-full h-screen px-10 py-[30px] sm:pl-[150px]">
+      <div className="p-5 md:w-3/5 md:mx-auto md:my-[30px] lg:w-[30%] lg:mx-auto lg:my-[30px]">
+        <h1 className="text-center text-2xl px-0 py-5 sm:text-[2rem]">
+          Create Contact
+        </h1>
         <form
           onSubmit={(e) => handleFormSubmit(e)}
-          className="create-contact-form"
+          className="bg-[grey] text-white px-5 py-2.5 rounded-[10px]"
         >
-          <div className="create-first-name">
+          <div className="flex flex-col gap-2 text-[1.2rem] mb-2.5 sm:text-2xl">
             <label className="" htmlFor="first-name">
               First Name:
             </label>
@@ -49,10 +51,10 @@ const CreateContact = () => {
               value={fName}
               onChange={(e) => setFName(e.target.value)}
               required
-              className="first-name-input"
+              className="text-[#222] px-3 py-[7px] rounded-[7px]"
             />
           </div>
-          <div className="create-last-name">
+          <div className="flex flex-col gap-2 text-[1.2rem] mb-2.5 sm:text-2xl">
             <label htmlFor="last-name" className="">
               Last Name:
             </label>
@@ -61,16 +63,16 @@ const CreateContact = () => {
               value={lName}
               onChange={(e) => setLName(e.target.value)}
               required
-              className="last-name-input"
+              className="text-[#222] px-3 py-[7px] rounded-[7px]"
             />
           </div>
-          <div className="create-status">
-            <label className="status-label" htmlFor="status">
+          <div className="flex justify-between mb-[30px]">
+            <label className="text-[1.2rem] sm:text-2xl" htmlFor="status">
               Status:
             </label>
 
-            <div className="status-radio-container">
-              <div className="status-radio">
+            <div className="flex flex-col w-6/12">
+              <div className="flex gap-4 items-center text-[1.2rem] sm:text-2xl">
                 <input
                   type="radio"
                   name="status"
@@ -82,7 +84,7 @@ const CreateContact = () => {
                 />
                 <p>Active</p>
               </div>
-              <div className="status-radio">
+              <div className="flex gap-4 items-center text-[1.2rem] sm:text-2xl">
                 <input
                   type="radio"
                   name="status"
@@ -96,7 +98,10 @@ const CreateContact = () => {
               </div>
             </div>
           </div>
-          <button className="save-contact-btn" type="submit">
+          <button
+            className="bg-[#4d4df5] w-full mb-2.5 mx-auto my-0 px-5 py-2.5 rounded-[10px] sm:text-xl"
+            type="submit"
+          >
             Save Contact
           </button>
         </form>

@@ -1,37 +1,30 @@
 import { LatLngTuple } from "leaflet";
-import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import Loading from "./Loading";
+import { useQuery } from "react-query";
+import { fetchMapData } from "./api";
 
 const Map = () => {
-  const [map, setMap] = useState<any>(null);
+  // Fetch COVID-19 map data using the useQuery hook
+  const { data: map, isLoading, isError } = useQuery("map", fetchMapData);
 
-  const fetchMap = async () => {
-    const response = await fetch("https://disease.sh/v3/covid-19/countries", {
-      method: "GET",
-    });
-    const data = await response.json();
-    setMap(data);
-  };
-
-  useEffect(() => {
-    fetchMap();
-  }, []);
-
-  if (!map) {
+  if (isLoading) {
     return <Loading />;
   }
 
-  const worldCenter: LatLngTuple = [0, 0];
-  const worldZoom = 2;
-  //   console.log(map);
+  if (isError) {
+    return <div>Error fetching data</div>;
+  }
+
+  const worldCenter: LatLngTuple = [0, 0]; //setting the location to display the world map
+  const worldZoom = 2; // initial zoom value on map load
 
   const markerMouseOver = (e: any) => {
-    e.target.openPopup(); // Open the popup on hover
+    e.target.openPopup(); // function to open the popup on hover
   };
 
   const markerMouseOut = (e: any) => {
-    e.target.closePopup(); // Close the popup when mouse leaves
+    e.target.closePopup(); // function to close the popup when mouse leaves
   };
 
   return (

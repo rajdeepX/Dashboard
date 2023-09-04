@@ -10,9 +10,9 @@ import Map from "./components/Map";
 function App() {
   return (
     <>
+      {/* implementing react-router to navigate between different routs */}
       <Navbar />
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
         <Route path="/" element={<ContactPage />} />
         <Route path="/charts" element={<Charts />} />
         <Route path="/data" element={<Data />} />
