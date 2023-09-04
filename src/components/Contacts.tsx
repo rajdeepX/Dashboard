@@ -1,7 +1,4 @@
 import { useState } from "react";
-// import { Link } from "react-router-dom";
-
-import "./Nav.css";
 
 import { useDispatch } from "react-redux";
 import { deleteContact } from "../features/contactSlice";
@@ -27,8 +24,6 @@ const Contacts = ({ id, fName, lName, status }: Contact) => {
     <div className="flex flex-col gap-4 bg-[#ddd] p-[7px] rounded-[7px]">
       <div className="p-3">
         <h2 className="capitalize text-xl text-center">{fName}</h2>
-        {/* <h2 className="capitalize text-xl">{lName}</h2> */}
-        {/* <h2 className="font-medium">{status}</h2> */}
       </div>
       <button
         onClick={() => setIsOpen(true)}

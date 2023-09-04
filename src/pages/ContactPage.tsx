@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-
-import "./ContactPage.css";
 import Contacts from "../components/Contacts";
 import { useAppSelector } from "../app/hooks";
 

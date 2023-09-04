@@ -1,6 +1,3 @@
-import React from "react";
-// import "./Contacts.css";
-
 const Loading = () => {
   return (
     <div className="w-full flex justify-center items-center">

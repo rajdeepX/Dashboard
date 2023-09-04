@@ -3,27 +3,38 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
 import { useDispatch } from "react-redux";
 import { editContact } from "../features/contactSlice";
-// import { nanoid } from "@reduxjs/toolkit";
 
 const EditContact = () => {
+  // get the 'id' parameter from the current route using useParams
   const { id } = useParams();
+
+  // custom Redux selector to get the contacts from the Redux store
   const contact = useAppSelector((state) => state.contact.contacts);
+
+  // finding current contact in the array based on the 'id' from the route
   const currentContact = contact.find((item) => item.id === id);
 
+  // initialize state variables with the current contact's data or empty string if not found
   const [fName, setFName] = useState(currentContact?.fName!);
   const [lName, setLName] = useState(currentContact?.lName!);
   const [status, setStatus] = useState(currentContact?.status!);
 
+  // Redux dispatch function using the custom Redux hook
   const dispatch = useDispatch();
 
+  // navigate function from React Router
   const navigate = useNavigate();
 
+  // Handle radio input change event
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStatus(e.target.value);
   };
 
+  // Handle form submission for editing the contact
   const handleFormEdit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // dispatch the 'editContact' action to update the contact in Redux store
     dispatch(
       editContact({
         id: currentContact?.id!,
@@ -32,6 +43,8 @@ const EditContact = () => {
         status,
       })
     );
+
+    // once done navigate to root directory
     navigate("/");
   };
 
