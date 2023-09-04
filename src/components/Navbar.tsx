@@ -4,7 +4,7 @@ import "./Nav.css";
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
+    <nav className="navbar sm:w-[10rem] sm:h-[100vh] w-[100%] h-[100px]  ">
       <div className="nav-container">
         <ul className="navbar-nav">
           <li className="nav-item">
@@ -13,7 +13,7 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink to={"/data"} className="nav-link">
+            <NavLink to={"/charts"} className="nav-link">
               <span className="link-text">Charts and Maps</span>
             </NavLink>
           </li>
