@@ -4,43 +4,63 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+Instructions to run the Application
 
-### `npm start`
+Node.js and npm should be installed on your computer. You can download them from the official
+website: https://nodejs.org/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Steps to Run the App:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. Clone the Repository:
+If your app is in a Git repository, you can clone it using the following command in your terminal:
 
-### `npm test`
+bash
+Copy code
+git clone <repository-url>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+If you have your project in a local directory, navigate to that directory using the terminal.
 
-### `npm run build`
+2. Install Dependencies:
+In the root directory of your project (where package.json is located), run the following command to
+install the required dependencies:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Copy code
+npm install
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This command will read the package.json file and install all the necessary packages listed under
+dependencies and devDependencies.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start the Development Server:
+To start the development server and run your React app, use the following command:
 
-### `npm run eject`
+npm start
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This command will start the development server, and your app will be accessible in your web browser at
+http://localhost:3000. You should see your app running.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Access the Contact Management Page and COVID-19 Dashboard:
+You should have two main sections in your app: the contact management page and the COVID-19
+dashboard. You can access these sections by clicking on the respective links or navigation elements
+within your app.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+API Information
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+I have used the - disease.sh - Open Disease Data API, to fetch the data for the covid19 dashboard.
 
-## Learn More
+1. https://disease.sh/v3/covid-19/all
+This api endpoint serves all the cases of covid19 across the world
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+2. https://disease.sh/v3/covid-19/historical/all?lastdays=all
+This api endpoint provides the worldwide cases with date and I have used it to plot the cases
+graph with its case data using recharts.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+3. https://disease.sh/v3/covid-19/countries
+This api endpoint provides the countrywise cases of covid19. I used it to plot all the effected
+countried and the total cases them in a map using leaflet.js
+
+
+
+That's it! Your simple static React app should now be up and running locally. You can make changes to
+the code, and the development server will automatically reload the app for you to see the updates.
+When you're ready to deploy your app, you can follow the deployment instructions for Create React App
+to make it accessible online.
