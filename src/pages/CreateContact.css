@@ -115,7 +115,13 @@
 
 @media screen and (min-width: 768px) {
   .create-contact-container {
-    width: 50%;
+    width: 60%;
+    margin: 30px auto;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .create-contact-container {
+    width: 30%;
     margin: 30px auto;
   }
 }

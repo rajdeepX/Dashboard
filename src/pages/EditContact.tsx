@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
 import { useDispatch } from "react-redux";
 import { editContact } from "../features/contactSlice";
@@ -13,7 +13,10 @@ const EditContact = () => {
   const [fName, setFName] = useState(currentContact?.fName!);
   const [lName, setLName] = useState(currentContact?.lName!);
   const [status, setStatus] = useState(currentContact?.status!);
+
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setStatus(e.target.value);
@@ -29,6 +32,7 @@ const EditContact = () => {
         status,
       })
     );
+    navigate("/");
   };
 
   return (
@@ -96,9 +100,7 @@ const EditContact = () => {
             </div>
           </div>
           <div className="edit-btn-container">
-            <Link to={"/"}>
-              <button className="edit-save">Save Edited Contact</button>
-            </Link>
+            <button className="edit-save">Save Edited Contact</button>
 
             <Link to={"/"}>
               <button className="cancel-save">Cancel</button>
