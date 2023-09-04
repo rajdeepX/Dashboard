@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Loading from "./Loading";
 
 const Data = () => {
   const [data, setData] = useState<any>(null);
@@ -17,25 +18,25 @@ const Data = () => {
   }, []);
 
   if (!data) {
-    return <h1 style={{ marginLeft: "200px" }}>Loading...</h1>;
+    return <Loading />;
   }
 
   console.log(data);
 
   return (
     <>
-      <div className="data-container p-12 flex flex-col items-center gap-[1rem] min-w-[50%]">
-        <div className="cases p-5 rounded-md bg-indigo-500 text-white w-[200px]">
-          <p className="mb-[5px]">Worldwide Cases</p>
-          <p>{data.cases} total</p>
+      <div className="data-container">
+        <div className="case-data">
+          <p className="data-head">Worldwide Cases</p>
+          <p className="data-info">{data.cases} total</p>
         </div>
-        <div className="cases p-5 rounded-md  bg-indigo-500 text-white w-[200px]">
-          <p className="mb-[5px]">Worldwide Recovery</p>
-          <p>{data.recovered} total</p>
+        <div className="case-data">
+          <p className="data-head">Worldwide Recovery</p>
+          <p className="data-info">{data.recovered} total</p>
         </div>
-        <div className="cases p-5 rounded-md bg-indigo-500 text-white w-[200px]">
-          <p className="mb-[5px]">Worldwide Deaths</p>
-          <p>{data.deaths} total</p>
+        <div className="case-data">
+          <p className="data-head">Worldwide Deaths</p>
+          <p className="data-info">{data.deaths} total</p>
         </div>
       </div>
     </>

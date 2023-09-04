@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import "./CreateContact.css";
+import "./CreateContact.css";
 import { addContact } from "../features/contactSlice";
 import { useDispatch } from "react-redux";
 import { nanoid } from "@reduxjs/toolkit";
@@ -33,15 +33,15 @@ const CreateContact = () => {
   };
 
   return (
-    <main className="ml-[150px] sm:m-0">
-      <div className="max-w-[800px] h-screen overflow-hidden flex flex-col justify-center items-center gap-8 mx-auto my-0 ">
-        <h1 className="text-[2.5rem] font-[500] mt-[-150px]">Create Contact</h1>
+    <main className="create-contact">
+      <div className="create-contact-container">
+        <h1 className="create-contact-head">Create Contact</h1>
         <form
           onSubmit={(e) => handleFormSubmit(e)}
-          className="flex flex-col w-[350px] gap-4 border p-5 rounded-[10px] border-solid border-[#999] "
+          className="create-contact-form"
         >
-          <div className="  flex flex-col w-full justify-between items-center sm:flex-row">
-            <label className="w-[30%]" htmlFor="first-name">
+          <div className="create-first-name">
+            <label className="" htmlFor="first-name">
               First Name:
             </label>
             <input
@@ -49,11 +49,11 @@ const CreateContact = () => {
               value={fName}
               onChange={(e) => setFName(e.target.value)}
               required
-              className=" p-[5px] border-2 border-solid border-[black] rounded-md w-[60%]"
+              className="first-name-input"
             />
           </div>
-          <div className="flex flex-col w-full justify-between items-center sm:flex-row">
-            <label htmlFor="last-name" className="w-[30%]">
+          <div className="create-last-name">
+            <label htmlFor="last-name" className="">
               Last Name:
             </label>
             <input
@@ -61,16 +61,16 @@ const CreateContact = () => {
               value={lName}
               onChange={(e) => setLName(e.target.value)}
               required
-              className=" p-[5px] border-2 border-solid border-[black] rounded-md w-[60%]"
+              className="last-name-input"
             />
           </div>
-          <div className="flex items-center text-center gap-8">
-            <label className="w-[30%]" htmlFor="status">
+          <div className="create-status">
+            <label className="status-label" htmlFor="status">
               Status:
             </label>
 
-            <div className="flex flex-col items-center w-1/5">
-              <div className="flex gap-4 w-full">
+            <div className="status-radio-container">
+              <div className="status-radio">
                 <input
                   type="radio"
                   name="status"
@@ -78,11 +78,11 @@ const CreateContact = () => {
                   checked={status === "Active"}
                   onChange={handleRadioChange}
                   required
-                  className="accent-[black] w-[60%]"
+                  className="accent-[black]"
                 />
                 <p>Active</p>
               </div>
-              <div className="flex gap-4 w-full">
+              <div className="status-radio">
                 <input
                   type="radio"
                   name="status"
@@ -90,16 +90,13 @@ const CreateContact = () => {
                   checked={status === "Inactive"}
                   onChange={handleRadioChange}
                   required
-                  className="accent-[black] w-[60%]"
+                  className="accent-[black]"
                 />
                 <p>Inactive</p>
               </div>
             </div>
           </div>
-          <button
-            className="border bg-[#555] text-white px-5 py-2.5 rounded-[10px] border-solid border-[#999]"
-            type="submit"
-          >
+          <button className="save-contact-btn" type="submit">
             Save Contact
           </button>
         </form>

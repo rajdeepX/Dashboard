@@ -21,22 +21,17 @@ const Contacts = ({ id, fName, lName, status }: Contact) => {
   };
 
   return (
-    <div className="flex flex-col gap-[0.7rem] w-[150px] h-40 justify-center items-center text-center mb-[80px]">
-      <div className="border-2 w-[190px] h-[156px] flex flex-col gap-4 p-5 rounded-[10px] border-solid border-[#a3a3a3]">
+    <div className="contacts-container">
+      <div className="contact-info">
         <h2 className="capitalize text-xl">{fName}</h2>
         <h2 className="capitalize text-xl">{lName}</h2>
-        <h2 className="@apply font-medium">{status}</h2>
+        <h2 className="font-medium">{status}</h2>
       </div>
-      <div className="flex flex-col gap-2">
+      <div className="contact-btn-container">
         <Link to={`/edit-contact/${id}`}>
-          <button className="bg-[#98d63b] text-white w-20 px-3 py-[7px] rounded-[10px] font-sans font-[500]">
-            Edit
-          </button>
+          <button className="edit-btn">Edit</button>
         </Link>
-        <button
-          className="bg-[#f03333] text-white w-20 px-3 py-[7px] rounded-[10px] font-sans font-[500]"
-          onClick={() => handleDelete(id)}
-        >
+        <button className="delete-btn" onClick={() => handleDelete(id)}>
           Delete
         </button>
       </div>

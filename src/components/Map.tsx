@@ -1,6 +1,7 @@
 import { LatLngTuple } from "leaflet";
 import { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import Loading from "./Loading";
 
 const Map = () => {
   const [map, setMap] = useState<any>(null);
@@ -18,7 +19,7 @@ const Map = () => {
   }, []);
 
   if (!map) {
-    return <h1 style={{ marginLeft: "200px" }}>Loading...</h1>;
+    return <Loading />;
   }
 
   const worldCenter: LatLngTuple = [0, 0];
@@ -34,7 +35,7 @@ const Map = () => {
   };
 
   return (
-    <div className="ml-[110px] p-5 w-[80%] h-[90vh]">
+    <div className="p-5 w-[100%] h-[90vh]">
       <MapContainer
         style={{ height: "100%", width: "100%" }}
         center={worldCenter}

@@ -13,6 +13,7 @@ import "./Data.css";
 import { Link } from "react-router-dom";
 import Data from "../components/Data";
 import Map from "../components/Map";
+import Loading from "../components/Loading";
 // import Chart from "../components/Chart";
 
 const formatNumber = (value: number) => {
@@ -49,12 +50,10 @@ const Charts = () => {
     // console.log(covidData);
   }, []);
 
-  useEffect(() => {
-    console.log(covidData);
-  }, [covidData]);
+  useEffect(() => {}, [covidData]);
 
   if (!covidData) {
-    return <h1 style={{ marginLeft: "200px" }}>Loading...</h1>;
+    return <Loading />;
   }
 
   // console.log(covidData);
@@ -71,35 +70,30 @@ const Charts = () => {
     date,
     cases: cases[date],
   }));
-  // const deathData = Object.keys(deaths).map((date) => ({
-  //   date,
-  //   deaths: deaths[date],
-  // }));
-  // const recoveredData = Object.keys(recovered).map((date) => ({
-  //   date,
-  //   recovered: recovered[date],
-  // }));
-
-  // const deathData =
-
-  // console.log(caseData.cases);
+  const deathData = Object.keys(deaths).map((date) => ({
+    date,
+    deaths: deaths[date],
+  }));
+  const recoveredData = Object.keys(recovered).map((date) => ({
+    date,
+    recovered: recovered[date],
+  }));
 
   return (
-    <main className="ml-10 pt-20 flex flex-col justify-center items-center">
-      <h1 className="text-xl font-[500] mb-14 ">Charts and Maps</h1>
+    <main className="chart-map-container">
+      <h1 className="chart-map-head">Charts and Maps</h1>
       {Object.keys(cases).length > 0 && (
         <>
-          <div className=" flex justify-center items-center gap-4">
-            <Data />
-            <div className="p-10 mb-10 flex flex-col gap-3 justify-center items-center">
-              <h2 className="text-[1.2rem] font-[500] mb-[20px]">
-                Worldwide cases of Covid19
-              </h2>
+          <Data />
+          <h2 className="line-chart-head">Worldwide cases of Covid19</h2>
+          <div className="line-chart-container">
+            <div className="line-chart">
               <LineChart
-                width={400}
-                height={250}
+                width={300}
+                height={200}
                 data={caseData}
                 margin={{ left: 20 }}
+                className="chart"
               >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey="date" />
@@ -114,55 +108,56 @@ const Charts = () => {
                 />
               </LineChart>
             </div>
+            <div className="line-chart">
+              <LineChart
+                width={300}
+                height={200}
+                data={deathData}
+                margin={{ left: 20 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="date" />
+                <YAxis tickFormatter={formatNumber} />
+                <Tooltip formatter={(value: number) => formatNumber(value)} />
+                <Legend />
+                <Line
+                  type="monotone"
+                  dataKey="deaths"
+                  stroke="red"
+                  strokeWidth={3}
+                />
+              </LineChart>
+            </div>
+
+            <div className="line-chart">
+              <LineChart
+                width={300}
+                height={200}
+                data={recoveredData}
+                margin={{ left: 20 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="date" />
+                <YAxis tickFormatter={formatNumber} />
+                <Tooltip formatter={(value: number) => formatNumber(value)} />
+                <Legend />
+                <Line
+                  type="monotone"
+                  dataKey="recovered"
+                  stroke=" #5ac457"
+                  strokeWidth={3}
+                />
+              </LineChart>
+            </div>
           </div>
-
-          {/* <div className="p-10 mb-10">
-            <LineChart
-              width={600}
-              height={300}
-              data={deathData}
-              margin={{ left: 20 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis tickFormatter={formatNumber} />
-              <Tooltip formatter={(value: number) => formatNumber(value)} />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey="deaths"
-                stroke="red"
-                strokeWidth={3}
-              />
-            </LineChart>
+          <div className="map-container">
+            <h1 className="map-head">Countrywise covid data</h1>
+            <Map />
           </div>
-
-          <div className="p-10 mb-10">
-            <LineChart
-              width={600}
-              height={300}
-              data={recoveredData}
-              margin={{ left: 20 }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="date" />
-              <YAxis tickFormatter={formatNumber} />
-              <Tooltip formatter={(value: number) => formatNumber(value)} />
-              <Legend />
-              <Line
-                type="monotone"
-                dataKey="recovered"
-                stroke=" #5ac457"
-                strokeWidth={3}
-              />
-            </LineChart>
-          </div> */}
-
-          <Map />
         </>
       )}
 
-      {!covidData && <h1 style={{ marginLeft: "200px" }}>Loading...</h1>}
+      {/* {!covidData && <h1>Loading...</h1>} */}
     </main>
   );
 };
