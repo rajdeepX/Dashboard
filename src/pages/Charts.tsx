@@ -1,19 +1,10 @@
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-} from "recharts";
-
 import Data from "../components/Data";
 import Map from "../components/Map";
 import Loading from "../components/Loading";
 import { fetchChartData } from "../components/api";
 import { useQuery } from "react-query";
 import numeral from "numeral";
+import Graph from "../components/Graph";
 
 const Charts = () => {
   // Fetch COVID-19 chart data using the useQuery hook
@@ -61,72 +52,28 @@ const Charts = () => {
       {Object.keys(cases).length > 0 && (
         <>
           <Data />
-          <h2 className="text-center text-xl mb-[30px]">
+          <h2 className="text-center text-xl mb-[100px] mt-[50px]">
             Worldwide cases of Covid19
           </h2>
-          <div className="flex flex-col gap-6 justify-center items-center mb-[50px]">
-            <div className="line-chart">
-              <LineChart
-                width={300}
-                height={200}
-                data={caseData}
-                margin={{ left: 20 }}
-                className="chart"
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" />
-                <YAxis tickFormatter={formatNumber} />
-                <Tooltip formatter={(value) => formatNumber(value)} />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="cases"
-                  stroke="#8884d8"
-                  style={{ strokeWidth: 2 }}
-                />
-              </LineChart>
-            </div>
-            <div className="line-chart">
-              <LineChart
-                width={300}
-                height={200}
-                data={deathData}
-                margin={{ left: 20 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" />
-                <YAxis tickFormatter={formatNumber} />
-                <Tooltip formatter={(value) => formatNumber(value)} />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="deaths"
-                  stroke="red"
-                  style={{ strokeWidth: 2 }}
-                />
-              </LineChart>
-            </div>
-
-            <div className="line-chart">
-              <LineChart
-                width={300}
-                height={200}
-                data={recoveredData}
-                margin={{ left: 20 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="date" />
-                <YAxis tickFormatter={formatNumber} />
-                <Tooltip formatter={(value) => formatNumber(value)} />
-                <Legend />
-                <Line
-                  type="monotone"
-                  dataKey="recovered"
-                  stroke=" #5ac457"
-                  style={{ strokeWidth: 2 }}
-                />
-              </LineChart>
-            </div>
+          <div className="flex flex-col lg:flex-row gap-6 justify-center items-center mb-[50px]">
+            <Graph
+              data={caseData}
+              color={"#8884d8"}
+              formatNumber={formatNumber}
+              type={"cases"}
+            />
+            <Graph
+              data={deathData}
+              type={"deaths"}
+              color={"red"}
+              formatNumber={formatNumber}
+            />
+            <Graph
+              data={recoveredData}
+              type={"recovered"}
+              color={"#5ac457"}
+              formatNumber={formatNumber}
+            />
           </div>
           <div className="map-container">
             <h1 className="text-center text-xl mb-[30px]">
