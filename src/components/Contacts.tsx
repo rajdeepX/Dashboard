@@ -27,7 +27,7 @@ const Contacts = ({ id, fName, lName, status }: Contact) => {
       </div>
       <button
         onClick={() => setIsOpen(true)}
-        className="px-[12px] py-[7px] bg-[#808080] text-white rounded-[7px]"
+        className="px-[12px] py-[7px] bg-[#4d4df5] text-white rounded-[7px]"
       >
         View Details
       </button>

@@ -22,7 +22,7 @@ const Modal = ({
         </div>
         <div className="flex justify-around">
           <Link to={`/edit-contact/${id}`}>
-            <button className="bg-[rgb(126,189,33)] text-[black] px-[15px] py-[7px] rounded-[7px]">
+            <button className="bg-[#4d4df5] text-[black] px-[15px] py-[7px] rounded-[7px]">
               Edit
             </button>
           </Link>
