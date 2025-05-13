@@ -28,12 +28,11 @@ const Map = () => {
   };
 
   return (
-    <div className="p-5 w-[100%] h-[90vh]">
+    <div className="w-full h-[80vh] rounded-xl overflow-hidden shadow-md">
       <MapContainer
         style={{ height: "100%", width: "100%" }}
         center={worldCenter}
-        zoom={worldZoom}
-      >
+        zoom={worldZoom}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
         {map.map((countryData: any) => (
@@ -44,17 +43,20 @@ const Map = () => {
               countryData.countryInfo.long,
             ]}
             eventHandlers={{
-              mouseover: (e) => markerMouseOver(e),
-              mouseout: (e) => markerMouseOut(e),
-            }}
-          >
+              mouseover: markerMouseOver,
+              mouseout: markerMouseOut,
+            }}>
             <Popup>
-              <div>
-                <img src={countryData.countryInfo.flag} alt="flag" />
-                <h2>{countryData.country}</h2>
-                <p>Total Cases: {countryData.cases}</p>
-                <p>Total Deaths: {countryData.deaths}</p>
-                <p>Total Recovered: {countryData.recovered}</p>
+              <div className="text-sm text-center">
+                <img
+                  src={countryData.countryInfo.flag}
+                  alt="flag"
+                  className="w-10 h-6 object-cover mx-auto mb-1"
+                />
+                <h2 className="font-semibold">{countryData.country}</h2>
+                <p>Cases: {countryData.cases}</p>
+                <p>Deaths: {countryData.deaths}</p>
+                <p>Recovered: {countryData.recovered}</p>
               </div>
             </Popup>
           </Marker>

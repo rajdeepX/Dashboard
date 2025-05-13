@@ -11,14 +11,9 @@ function App() {
   return (
     <>
       {/* implementing react-router to navigate between different routs */}
-      <Navbar />
+
       <Routes>
-        <Route path="/" element={<ContactPage />} />
-        <Route path="/charts" element={<Charts />} />
-        <Route path="/data" element={<Data />} />
-        <Route path="/maps" element={<Map />} />
-        <Route path="/create-contact" element={<CreateContact />} />
-        <Route path="/edit-contact/:id" element={<EditContact />} />
+        <Route path="/" element={<Charts />} />
       </Routes>
     </>
   );

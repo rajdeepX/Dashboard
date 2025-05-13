@@ -1,9 +1,9 @@
 const Loading = () => {
   return (
-    <div className="w-full flex justify-center items-center">
-      <div className="text-center bg-[#aaa]  text-2xl w-[300px] mx-auto my-6 px-[50px] py-5 rounded-[10px]">
-        <h2 className="loading-head">Loading...</h2>
-        <p className="loading-info">Please wait while your data is retrived</p>
+    <div className="w-full flex justify-center items-center h-[60vh]">
+      <div className="text-center bg-white shadow-lg text-gray-700 text-xl px-10 py-6 rounded-xl">
+        <h2 className="font-semibold mb-2">Loading...</h2>
+        <p>Please wait while we retrieve the latest data.</p>
       </div>
     </div>
   );
